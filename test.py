@@ -59,18 +59,19 @@ def process_images_in_directory(directory, output_file):
         for root, dirs, files in os.walk(directory):
             for filename in files:
                 if filename.endswith('.tiff'):
-                    # Construct full path to the image
+                    # Constructing full path to the image
                     image_path = os.path.join(root, filename)
                     num_cells, _ = process_image(image_path)
-                    # Store the total number of cells for the image
+                    # Storing the total number of cells for the image
                     image_cell_counts[filename] = num_cells
 
         # Printing the list of images and their total cell counts
         print("List of Images and Total Number of Cells:", file=f)
         for image_name, cell_count in image_cell_counts.items():
             print(f"Image: {image_name} - Total Cells: {cell_count}", file=f)
-        print('-' * 100, file=f)  # Add separator before detailed cell information
-        print(file=f)  # Add line break before the details
+        print(file=f)  # Adding line break after the list
+        print('-' * 100, file=f)  # Adding separator before detailed cell information
+        print(file=f)  # Adding line break before the details
 
         # Looping through all files and subdirectories in the directory
         for root, dirs, files in os.walk(directory):
