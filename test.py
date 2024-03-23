@@ -21,9 +21,6 @@ def process_image(image_path):
     # Count the number of cells identified
     num_cells = len(contours)
 
-    # Additional processing or analysis can be performed here based on the segmented cells
-    # For example, you can calculate cell properties like area, perimeter, etc.
-
     return num_cells
 
 # Function to recursively process images in all subdirectories
@@ -31,7 +28,7 @@ def process_images_in_directory(directory):
     # Loop through all files and subdirectories in the directory
     for root, dirs, files in os.walk(directory):
         for filename in files:
-            if filename.endswith('.tiff'):  # Assuming images are in TIFF format
+            if filename.endswith('.tiff'):
                 image_path = os.path.join(root.encode('unicode-escape').decode(), filename.encode('unicode-escape').decode())
                 num_cells = process_image(image_path)
                 print(f'Image: {filename}, Number of cells: {num_cells}')
